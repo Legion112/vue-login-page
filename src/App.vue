@@ -32,14 +32,14 @@
         target="_blank"
         text
       >
-        <span class="mr-2">Latest Release</span>
+        <span class="mr-2">$t('release')</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>
 
-    <v-content>
+    <v-main>
       <HelloWorld/>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
@@ -49,10 +49,16 @@ import {Component, Vue} from "vue-property-decorator";
 
 @Component({ components: {
   HelloWorld,
-  }})
-
+}})
 export default class App extends Vue{
 
 
 }
 </script>
+<i18n>
+{
+  "en": {
+    "release": "Latest Release"
+  }
+}
+</i18n>
