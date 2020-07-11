@@ -53,7 +53,7 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
+      "plugin:vue/strongly-recommended",
       "eslint:recommended",
       "@vue/typescript",
       "@vue/typescript/recommended"
@@ -63,7 +63,19 @@
       "ecmaVersion": 2020
     },
     "rules": {
-      "indent": ["error", 2]
+      "indent": [
+        "error",
+        2
+      ],
+      "quotes": [
+        2,
+        "single"
+      ],
+      "no-unused-vars": "error",
+      "vue/no-confusing-v-for-v-if": "error",
+      "vue/no-v-html": "error",
+      "vue/order-in-components": "error",
+      "vue/this-in-template": "error"
     },
     "overrides": [
       {

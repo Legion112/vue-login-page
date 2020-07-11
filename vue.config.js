@@ -1,5 +1,6 @@
 module.exports = {
   "lintOnSave": false,
+
   "pluginOptions": {
     "i18n": {
       "locale": "en",
@@ -8,7 +9,10 @@ module.exports = {
       "enableInSFC": true
     }
   },
+
   "transpileDependencies": [
     "vuetify"
-  ]
+  ],
+
+  lintOnSave: false
 }

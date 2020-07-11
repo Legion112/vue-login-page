@@ -25,27 +25,29 @@
         />
       </div>
 
-      <v-spacer></v-spacer>
+      <v-spacer />
 
       <v-btn
         href="https://github.com/vuetifyjs/vuetify/releases/latest"
         target="_blank"
         text
       >
-        <span class="mr-2">$t('release')</span>
+        <span class="mr-2"> {{ $t('release') }}</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      <v-container class="main-container">
+        <router-view />
+      </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script lang="ts">
 import HelloWorld from './components/HelloWorld.vue';
-import {Component, Vue} from "vue-property-decorator";
+import {Component, Vue} from 'vue-property-decorator';
 
 @Component({ components: {
   HelloWorld,
@@ -62,3 +64,10 @@ export default class App extends Vue{
   }
 }
 </i18n>
+<style scoped>
+.main-container {
+  display: flex;
+  justify-content: center;
+  min-height: calc(100vh - 64px - 12px);
+}
+</style>
