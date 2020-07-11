@@ -5,6 +5,9 @@ import {authenticated, guardsFactory} from '@/router/guards';
 
 Vue.use(VueRouter)
 
+export const ROUTE_REGISTER = 'Register'
+export const ROUTE_LOGIN = 'Login'
+
 const routes: Array<RouteConfig> = [
   {
     path: '/',
@@ -21,8 +24,13 @@ const routes: Array<RouteConfig> = [
   },
   {
     path: '/login',
-    name: 'Login',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
+    name: ROUTE_LOGIN,
+    component: () => import(/* webpackChunkName: "about" */ '../views/authentication/Login.vue')
+  },
+  {
+    path: '/register',
+    name: ROUTE_REGISTER,
+    component: () => import(/* webpackChunkName: "register" */ '../views/authentication/Registration.vue')
   }
 ]
 
@@ -30,7 +38,7 @@ const router = new VueRouter({
   mode: 'history',
   routes,
 })
-const isAuthenticated = false;
 router.beforeEach(guardsFactory([authenticated]))
 
 export default router
+

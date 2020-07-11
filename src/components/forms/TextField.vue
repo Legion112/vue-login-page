@@ -6,7 +6,7 @@ import VTextField from 'vuetify/lib/components/VTextField/VTextField'
 
 // Create Base Mixins and Define Custom Properties
 const base = Vue.extend({ mixins: [VTextField] })
-export default base.extend({
+const TextField =  base.extend({
   props: {
     hideDetails: {
       type: [Boolean, String],
@@ -30,5 +30,5 @@ export default base.extend({
     },
   }
 })
-
+export default TextField;
 </script>

@@ -1,26 +1,38 @@
 <template>
-  <div class="login">
+  <div class="register">
     <v-form class="align-center mx-auto">
       <v-card
         class=""
         max-width="344"
       >
-        <v-card-title>Login</v-card-title>
-        <v-card-text class="d-flex flex-column align-center justify-space-around">
-          <VTextField
+        <v-card-title>Registration</v-card-title>
+        <v-card-text
+          class="d-flex flex-column align-content-space-around justify-space-around"
+        >
+          <v-text-field
+            label="email"
+            outlined
+            hide-details="auto"
+          />
+          <v-text-field
             label="username"
             outlined
             hide-details="auto"
           />
-          <VTextField
+          <v-text-field
             label="password"
             type="password"
             outlined
             hide-details="auto"
-            class="mt-4"
           />
         </v-card-text>
         <v-card-actions class="pa-4 d-flex justify-end">
+          <BaseBtn
+            outlined
+            :to="{name: routeLogin}"
+          >
+            Register
+          </BaseBtn>
           <BaseBtn
             outlined
           >
@@ -36,8 +48,9 @@
 
 <script>
 import {Component, Vue} from 'vue-property-decorator'
-import TextField from '../components/forms/TextField'
-import BaseBtn from '../components/base/BaseBtn'
+import TextField from '../../components/forms/TextField'
+import BaseBtn from '../../components/base/BaseBtn'
+import {ROUTE_LOGIN} from '../../router';
 
 @Component({
   components: {
@@ -46,11 +59,13 @@ import BaseBtn from '../components/base/BaseBtn'
   }
 })
 export default class Home extends Vue {
+  routeLogin = ROUTE_LOGIN
 }
 </script>
 <style>
-  .login {
+  .register {
     display: flex;
     align-items: center;
   }
+
 </style>
