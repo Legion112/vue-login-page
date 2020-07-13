@@ -1,6 +1,9 @@
 <template>
   <div class="register">
-    <v-form class="align-center mx-auto">
+    <v-form 
+      class="align-center mx-auto"
+      ref="form"
+    >
       <v-card
         class=""
         max-width="344"
@@ -9,35 +12,46 @@
         <v-card-text
           class="d-flex flex-column align-content-space-around justify-space-around"
         >
-          <v-text-field
-            label="email"
-            outlined
-            hide-details="auto"
+          <TextField
+            label="Email"
+            v-model="fields.email"
+            :rules="[rules.required, rules.email]"
           />
-          <v-text-field
-            label="username"
-            outlined
-            hide-details="auto"
+          <TextField
+            label="Login"
+            v-model="fields.login"
+            :rules="[rules.required]"
           />
-          <v-text-field
-            label="password"
+          <TextField
+            v-model="fields.password"
+            label="Password"
             type="password"
+            :rules="[rules.required]"
+          />
+          <TextField
             outlined
-            hide-details="auto"
+
+            v-model="fields.confirm"
+            label="Rapid password"
+            type="password"
+            :rules="[rules.required, rules.confirm(fields.password)]"
           />
         </v-card-text>
         <v-card-actions class="pa-4 d-flex justify-end">
-          <BaseBtn
+          <v-btn
             outlined
+            style="margin-right: auto"
             :to="{name: routeLogin}"
           >
-            Register
-          </BaseBtn>
-          <BaseBtn
-            outlined
-          >
             Login
-          </BaseBtn>
+          </v-btn>
+          <v-btn
+            outlined
+            color="primary"
+            @click="submit"
+          >
+            Register
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-form>
@@ -46,26 +60,50 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import {Component, Vue} from 'vue-property-decorator'
-import TextField from '../../components/forms/TextField'
-import BaseBtn from '../../components/base/BaseBtn'
-import {ROUTE_LOGIN} from '../../router';
+import {ROUTE_LOGIN} from '@/router';
+import {required, email} from '@/components/forms/validation';
+import TextField from '@/components/forms/TextField.vue';
+import {VForm} from '@/types';
+import confirmFactory from '@/components/forms/validation/confirm';
 
 @Component({
-  components: {
-    TextField,
-    BaseBtn
+  components: {TextField},
+  computed: {
+    form(): VForm {
+      return this.$refs.form as VForm
+    }
   }
 })
 export default class Home extends Vue {
-  routeLogin = ROUTE_LOGIN
+    fields = {
+      email: '',
+      login: '',
+      password: '',
+      confirm: '',
+    }
+    routeLogin: string = ROUTE_LOGIN
+    rules = {
+      required,
+      email,
+      confirm: confirmFactory
+    }
+    submit(){
+      if (this.form.validate()) {
+        console.log('Form is valid')
+        return;
+      }
+      // TODO send data to the server.
+      // show user notification data is not correct
+      console.log('Form is not valid')
+    }
+    form!: VForm
 }
 </script>
 <style>
-  .register {
+.register {
     display: flex;
     align-items: center;
-  }
-
+}
 </style>

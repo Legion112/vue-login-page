@@ -24,6 +24,7 @@
           <BaseBtn
             outlined
             :to="{name: routeRegister}"
+            style="margin-right: auto"
             color="secondary"
           >
             Register
