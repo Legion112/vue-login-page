@@ -1,5 +1,8 @@
 <template>
   <v-app>
+    <div>
+      <Notification message="Data has bean sent" />
+    </div>
     <v-app-bar
       app
       color="primary"
@@ -48,8 +51,10 @@
 <script lang="ts">
 import HelloWorld from './components/HelloWorld.vue';
 import {Component, Vue} from 'vue-property-decorator';
+import Notification from '@/components/core/notification/Notification.vue';
 
 @Component({ components: {
+  Notification,
   HelloWorld,
 }})
 export default class App extends Vue{

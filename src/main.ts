@@ -1,12 +1,12 @@
 import Vue from 'vue'
-import './plugins/axios'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 import i18n from './i18n'
 import vuetify from './plugins/vuetify';
-
 import './assets/css/global.css';
+
+import './mock/index';
 
 Vue.config.productionTip = false
 

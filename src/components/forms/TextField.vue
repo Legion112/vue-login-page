@@ -9,5 +9,6 @@ export default class TextField extends VTextField {
   @Prop({default: true, type: Boolean}) readonly outlined!: boolean;
   @Prop({default: true, type: Boolean}) readonly dense!: boolean
   @Prop({default: 'secondary', type: String}) readonly color!: string
+  @Prop({default: () =>[], type: Array}) readonly errorMessages!: string[]
 }
 </script>
