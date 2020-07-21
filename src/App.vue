@@ -65,7 +65,7 @@ export default class App extends Vue{
 <i18n>
 {
   "en": {
-    "release": "Latest Release"
+    "release": "Latest Releas"
   }
 }
 </i18n>
